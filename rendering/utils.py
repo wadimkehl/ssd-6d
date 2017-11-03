@@ -80,7 +80,7 @@ def create_pose(vertex, scale=0, angle_deg=0):
     transform = np.eye(4)
     rodriguez = np.asarray([0, 0, 1]) * (angle_deg * math.pi / 180.0)
     angle_axis = expm3(np.cross(np.eye(3), rodriguez))
-    transform[0:3, 0:3] = angle_axis @ rot
+    transform[0:3, 0:3] = np.matmul(angle_axis, rot)
     transform[0:3, 3] = [0, 0, scale]
     return transform
 
