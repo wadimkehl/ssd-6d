@@ -2,7 +2,8 @@
 This code accompanies the paper
 
 **Wadim Kehl, Fabian Manhardt, Federico Tombari, Slobodan Ilic and Nassir Navab:
-SSD-6D: Making RGB-Based 3D Detection and 6D Pose Estimation Great Again. ICCV 2017.**
+SSD-6D: Making RGB-Based 3D Detection and 6D Pose Estimation Great Again. ICCV 2017.**  [(PDF)]( http://campar.in.tum.de/pub/kehl2017iccv/kehl2017iccv.pdf)
+
 
 and allows to reproduce parts of our work. Note that due to IP issues we can only 
 provide our trained networks and the inference part. This allows to produce the detections and 
