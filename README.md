@@ -11,8 +11,8 @@ the 6D pose pools. **Unfortunately, the code for training as well as 2D/3D refin
 
 In order to use the code, you need to download
 * the used datasets (hinterstoisser, tejani) in 
-SIXD format (e.g. from http://cmp.felk.cvut.cz/sixd/challenge_2017/)
-* the trained networks from https://www.dropbox.com/sh/08mv6fmzi6dylj2/AACIK-odLEu560UDUs2WY9Sba?dl=0
+SIXD format (e.g. from [(here)](http://cmp.felk.cvut.cz/sixd/challenge_2017/) )
+* the trained networks from [(here)](https://www.dropbox.com/sh/08mv6fmzi6dylj2/AACIK-odLEu560UDUs2WY9Sba?dl=0)
 
 and use the run.py script to do the magic. Invoke 'python3 run.py --help' to see the available commands. 
 For the correct thresholds you should look at the supplemental material.
