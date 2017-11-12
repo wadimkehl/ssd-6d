@@ -198,7 +198,7 @@ class Renderer(app.Canvas):
 
         width = self.cam[0, 0] * diameter / pose[2, 3]  # X coordinate == shape[1]
         height = self.cam[1, 1] * diameter / pose[2, 3]  # Y coordinate == shape[0]
-        proj = self.cam @ pose[0:3, 3]
+        proj = np.matmul(self.cam, pose[0:3, 3])
         proj /= proj[2]
         cut = np.asarray([proj[1] - height//2, proj[0] - width//2, proj[1] + height//2, proj[0] + width//2], dtype=int)
 
