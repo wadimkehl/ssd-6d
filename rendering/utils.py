@@ -224,7 +224,7 @@ def verify_6D_poses(detections, model_map, cam, image):
             ren.draw_model(model, pose)
             ren_grads, ren_mags = compute_grads_and_mags(ren.finish()[0])
             ren_grads = np.reshape(ren_grads, (-1, 2))
-            dot = np.sum(ren_grads[:, 0]*scene_grads[:, 0] + ren_grads[:, 1]*scene_grads[:, 1])
+            dot = np.sum(np.abs(ren_grads[:, 0]*scene_grads[:, 0] + ren_grads[:, 1]*scene_grads[:, 1]))
             sum = np.sum(ren_mags>0)
             scores.append(dot / sum)
         new_det = det[:6]
