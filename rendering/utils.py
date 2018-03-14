@@ -5,7 +5,7 @@ import math
 import numpy as np
 import cv2
 from tqdm import tqdm
-from scipy.linalg import expm3, norm
+from scipy.linalg import expm, norm
 
 from rendering.renderer import Renderer
 
@@ -79,7 +79,7 @@ def create_pose(vertex, scale=0, angle_deg=0):
     rot = compute_rotation_from_vertex(vertex)
     transform = np.eye(4)
     rodriguez = np.asarray([0, 0, 1]) * (angle_deg * math.pi / 180.0)
-    angle_axis = expm3(np.cross(np.eye(3), rodriguez))
+    angle_axis = expm(np.cross(np.eye(3), rodriguez))
     transform[0:3, 0:3] = np.matmul(angle_axis, rot)
     transform[0:3, 3] = [0, 0, scale]
     return transform
