@@ -115,7 +115,7 @@ def precompute_projections(views, inplanes, cam, model3D):
             ren.draw_model(model3D, pose)
             box = np.argwhere(ren.finish()[1])  # Deduct bbox from depth rendering
             box = [box.min(0)[1], box.min(0)[0], box.max(0)[1] + 1, box.max(0)[0] + 1]
-            centroid = np.matmul(pose[:3, :3], model3D.centroid) + pose[:3, 3]
+            centroid = pose[:3, 3]
             centroid_x = cam[0, 2] + centroid[0] * cam[0, 0] / centroid[2]
             centroid_y = cam[1, 2] + centroid[1] * cam[1, 1] / centroid[2]
 
@@ -212,7 +212,6 @@ def verify_6D_poses(detections, model_map, cam, image):
 
     scene_grads, scene_mags = compute_grads_and_mags(image)
     scene_grads = np.reshape(scene_grads, (-1, 2))
-    #cv2.imshow('mags', scene_mags)
 
     ren = Renderer((image.shape[1], image.shape[0]), cam)
     filtered = []
