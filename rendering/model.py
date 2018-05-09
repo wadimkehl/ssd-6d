@@ -40,7 +40,7 @@ class Model3D:
         self.bb.append([maxx, miny, maxz])
         self.bb.append([maxx, maxy, maxz])
         self.bb = np.asarray(self.bb, dtype=np.float32)
-        #self.diameter = max(pdist(self.bb, 'euclidean'))
+        self.diameter = max(pdist(self.bb, 'euclidean'))
 
         # Set up rendering data
         colors = [[1, 0, 0],[1, 1, 0], [0, 1, 0], [0, 1, 1],
