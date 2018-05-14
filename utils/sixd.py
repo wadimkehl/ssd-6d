@@ -7,10 +7,7 @@ import itertools
 import numpy as np
 import cv2
 
-if sys.platform == "darwin":
-    import ruamel.yaml as yaml
-else:
-    import ruamel_yaml as yaml
+import ruamel.yaml as yaml
 
 from rendering.model import Model3D
 
@@ -56,7 +53,7 @@ class Frame:
 class Benchmark:
     def __init__(self):
         self.frames = []
-        self.cam = np.identity(3)
+        self.cam = None
         self.models = {}
 
 
@@ -71,6 +68,8 @@ def load_sixd(base_path, seq, nr_frames=0, load_mesh=True):
         bench.cam[1, 1] = cam_info['fy']
         bench.cam[1, 2] = cam_info['cy']
         bench.scale_to_meters = 0.001 * cam_info['depth_scale']
+    else:
+        print("Could not find camera.yml. Taking camera matrix of the first frame instead.")
 
     model_info = load_yaml(os.path.join(base_path, 'models', 'models_info.yml'))
     for key, val in model_info.items():
@@ -103,6 +102,10 @@ def load_sixd(base_path, seq, nr_frames=0, load_mesh=True):
             fr.gt.append((gt['obj_id'], pose, gt['obj_bb']))
 
         fr.cam = info[i]['cam_K']
+
+        if bench.cam is None:
+            bench.cam = info[i]['cam_K']
+
         bench.frames.append(fr)
 
     if load_mesh:
