@@ -17,6 +17,8 @@ SIXD format (e.g. from [here](http://cmp.felk.cvut.cz/sixd/challenge_2017/) )
 and use the run.py script to do the magic. Invoke 'python3 run.py --help' to see the available commands. 
 For the correct thresholds you should look at the supplemental material.
 
+Fabian Manhardt now also added a benchmark.py that allows you to properly run the evaluation on a sequence and produce metrics. Note, though, that these numbers are without the final pose refinement.
+
 
 
 
